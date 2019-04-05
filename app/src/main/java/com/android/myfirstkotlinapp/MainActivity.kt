@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnClick = findViewById(R.id.btnClick)
         tvName = findViewById(R.id.tvName)
 
-        btnClick.setOnClickListener { this }
+        btnClick.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         val name = etName.text
-        tvName.text = name
+        tvName.text = "$name"
     }
 }
