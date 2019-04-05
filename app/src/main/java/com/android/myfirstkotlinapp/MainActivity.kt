@@ -7,10 +7,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
 
     lateinit var etName : EditText
     lateinit var btnClick : Button
+    lateinit var btnIntroduce : Button
     lateinit var tvName : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,13 +20,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         etName = findViewById(R.id.etName)
         btnClick = findViewById(R.id.btnClick)
+        btnIntroduce = findViewById(R.id.btnIntroduce)
         tvName = findViewById(R.id.tvName)
 
-        btnClick.setOnClickListener(this)
-    }
+        btnClick.setOnClickListener{
+            var name = etName.text
+            tvName.text = "Click as $name"
+        }
 
-    override fun onClick(v: View?) {
-        val name = etName.text
-        tvName.text = "$name"
+        btnIntroduce.setOnClickListener{
+            var name = etName.text
+            tvName.text = "Introducing $name"
+        }
     }
 }
