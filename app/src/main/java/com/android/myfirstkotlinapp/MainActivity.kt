@@ -27,12 +27,12 @@ class MainActivity : AppCompatActivity() {
         tvName = findViewById(R.id.tvName)
 
         btnClick.setOnClickListener{
-            var name = etName.text
+            val name = etName.text
             tvName.text = "Click as $name"
         }
 
         btnIntroduce.setOnClickListener{
-            var name = etName.text
+            val name = etName.text
             tvName.text = "Introducing $name"
         }
 
