@@ -10,6 +10,10 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val KEY_NAME = "name"
+    }
+
     lateinit var etName : EditText
     lateinit var btnClick : Button
     lateinit var btnIntroduce : Button
@@ -38,8 +42,11 @@ class MainActivity : AppCompatActivity() {
 
         btnNext.setOnClickListener{
 
-            val intent: Intent = Intent(applicationContext, SecondActivity::class.java)
-            startActivity(intent)
+            val name : String = etName.text.toString()
+
+            startActivity(Intent(applicationContext, SecondActivity::class.java)
+                .putExtra(KEY_NAME, name))
+
         }
     }
 }
