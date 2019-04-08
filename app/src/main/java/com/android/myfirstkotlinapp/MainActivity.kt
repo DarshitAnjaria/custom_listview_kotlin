@@ -1,52 +1,27 @@
 package com.android.myfirstkotlinapp
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        const val KEY_NAME = "name"
-    }
-
-    lateinit var etName : EditText
-    lateinit var btnClick : Button
-    lateinit var btnIntroduce : Button
-    lateinit var btnNext : Button
-    lateinit var tvName : TextView
+    lateinit var listView : ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        etName = findViewById(R.id.etName)
-        btnClick = findViewById(R.id.btnClick)
-        btnIntroduce = findViewById(R.id.btnIntroduce)
-        btnNext = findViewById(R.id.btnNext)
-        tvName = findViewById(R.id.tvName)
+        listView = findViewById(R.id.listView)
 
-        btnClick.setOnClickListener{
-            val name = etName.text
-            tvName.text = "Click as $name"
-        }
+        val names = arrayListOf("Name 1", "Name 2", "Name 3", "Name 4")
 
-        btnIntroduce.setOnClickListener{
-            val name = etName.text
-            tvName.text = "Introducing $name"
-        }
+        listView.adapter = ArrayAdapter<String>(applicationContext, android.R.layout.simple_list_item_1,names)
 
-        btnNext.setOnClickListener{
-
-            val name : String = etName.text.toString()
-
-            startActivity(Intent(applicationContext, SecondActivity::class.java)
-                .putExtra(KEY_NAME, Hero("Name", "Real Name")))
-
+        listView.setOnItemClickListener { parent, view, position, id ->
+            Toast.makeText(applicationContext, "You clicked : " + names[position], Toast.LENGTH_LONG).show()
         }
     }
 }
