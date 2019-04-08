@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             val name : String = etName.text.toString()
 
             startActivity(Intent(applicationContext, SecondActivity::class.java)
-                .putExtra(KEY_NAME, name))
+                .putExtra(KEY_NAME, Hero("Name", "Real Name")))
 
         }
     }

@@ -15,8 +15,8 @@ class SecondActivity : AppCompatActivity() {
 
         tvFetch = findViewById(R.id.tvFetch)
 
-        val fetch = intent.getStringExtra(MainActivity.KEY_NAME)
+        val hero = intent.getSerializableExtra(MainActivity.KEY_NAME) as Hero
 
-        tvFetch.text = "$fetch"
+        tvFetch.text = "Name : " + hero.name + "Real Name " + hero.realName
     }
 }
